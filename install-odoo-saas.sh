@@ -349,7 +349,7 @@
 
  if [[ -n "$ADD_AUTOINSTALL_MODULES" ]]
  then
-     DB_PY=$ODOO_SOURCE_DIR/odoo/service/db.py
+     DB_PY=$ODOO_SOURCE_DIR/openerp/service/db.py
      # add base code
      grep AUTOINSTALL_MODULES $DB_PY || \
          sed -i "s;\
