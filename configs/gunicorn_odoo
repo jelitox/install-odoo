@@ -1,0 +1,17 @@
+#!/bin/bash
+#Odoo Config
+ODOODIR=/opt/auge_mayen/         # Odoo Directory
+USER=servidor                              		           # the user to run as
+GROUP=servidor                      			           # the group to run as
+echo "Starting $NAME as `whoami`"
+# Go to folder source
+cd $ODOODIR
+# Initialize Odoo
+exec /usr/bin/gunicorn openerp:service.wsgi_server.application \
+  -c openerp-wsgi.py \
+  --log-level=debug \
+  --log-file=-
+
+
+
+  
