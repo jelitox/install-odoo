@@ -1,3 +1,21 @@
+INIT_SAAS_TOOLS_VALUE="\
+--portal-create \
+--server-create \
+--plan-create \
+--odoo-script=/usr/local/src/odoo-source/openerp-server \
+--odoo-config=/etc/openerp-server.conf \
+--admin-password=1eEHU349vOKutGFU \
+--portal-db-name=auge \
+--server-db-name=auge \
+--plan-template-db-name=auge \
+--plan-clients=demo-%i.auge \
+--odoo-xmlrpc-port=8869 \
+" \
+INIT_SAAS_TOOLS=$INIT_SAAS_TOOLS_VALUE bash -x install-odoo-saas.sh
+
+sudo su - odoo -s /bin/bash -c  "/usr/local/src/odoo-source/openerp-server -c /etc/openerp-server.conf"
+
+
 # install-odoo
 
 Install developement or production 
@@ -23,20 +41,20 @@ with or without using [Amazon RDS](https://aws.amazon.com/rds/), with additional
 
     # run script with parameters you need
     # (list of all parameters with default values can be found at install-odoo-saas.sh)
-    INSTALL_DEPENDENCIES=yes \
-    INIT_POSTGRESQL=yes \
-    INIT_BACKUPS=yes \
-    INIT_NGINX=yes \
-    INIT_START_SCRIPTS=yes \
-    INIT_ODOO_CONFIG=yes \
-    INIT_USER=yes \
-    INIT_DIRS=yes \
-    CLONE_ODOO=yes \
-    CLONE_IT_PROJECTS_LLC=yes \
-    CLONE_OCA=yes \
-    UPDATE_ADDONS_PATH=yes \
-    ADD_AUTOINSTALL_MODULES="['ir_attachment_force_storage']"
-    /bin/bash -x install-odoo-saas.sh
+INSTALL_DEPENDENCIES=yes \
+INIT_POSTGRESQL=yes \
+INIT_BACKUPS=yes \
+INIT_NGINX=yes \
+INIT_START_SCRIPTS=yes \
+INIT_ODOO_CONFIG=yes \
+INIT_USER=yes \
+INIT_DIRS=yes \
+CLONE_ODOO=yes \
+CLONE_IT_PROJECTS_LLC=yes \
+CLONE_OCA=yes \
+UPDATE_ADDONS_PATH=yes \
+ADD_AUTOINSTALL_MODULES="['ir_attachment_force_storage']"  \
+/bin/bash -x install-odoo-saas.sh
 
 ## After installation
 
@@ -139,20 +157,20 @@ To prepare [saas tools](https://github.com/it-projects-llc/odoo-saas-tools) do a
 
 Example for base installation
 
-    INIT_SAAS_TOOLS_VALUE="\
-    --portal-create \
-    --server-create \
-    --plan-create \
-    --odoo-script=/usr/local/src/odoo-source/odoo-bin \
-    --odoo-config=/etc/openerp-server.conf \
-    --admin-password=${ODOO_MASTER_PASS} \
-    --portal-db-name=${ODOO_DOMAIN} \
-    --server-db-name=server-1.${ODOO_DOMAIN} \
-    --plan-template-db-name=template-1.${ODOO_DOMAIN} \
-    --plan-clients=demo-%i.${ODOO_DOMAIN} \
-    --odoo-xmlrpc-port=8869 \
-    "
-    INIT_SAAS_TOOLS=$INIT_SAAS_TOOLS_VALUE bash -x install-odoo-saas.sh
+INIT_SAAS_TOOLS_VALUE="\
+--portal-create \
+--server-create \
+--plan-create \
+--odoo-script=/usr/local/src/odoo-source/odoo-bin \
+--odoo-config=/etc/openerp-server.conf \
+--admin-password=${ODOO_MASTER_PASS} \
+--portal-db-name=${ODOO_DOMAIN} \
+--server-db-name=server-1.${ODOO_DOMAIN} \
+--plan-template-db-name=template-1.${ODOO_DOMAIN} \
+--plan-clients=demo-%i.${ODOO_DOMAIN} \
+--odoo-xmlrpc-port=8869 \
+"
+INIT_SAAS_TOOLS=$INIT_SAAS_TOOLS_VALUE bash -x install-odoo-saas.sh
 
 Example for docker installation
 
